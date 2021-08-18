@@ -21,4 +21,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/threads', 'App\Http\Controllers\ThreadController@index')->name('threads');
+
+Route::get('/threads/create', 'App\Http\Controllers\ThreadController@create')->name('threads.create');
+Route::post('/threads/create', 'App\Http\Controllers\ThreadController@create');
+
 require __DIR__.'/auth.php';
