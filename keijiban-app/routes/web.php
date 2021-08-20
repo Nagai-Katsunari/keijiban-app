@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +26,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/threads', 'App\Http\Controllers\ThreadController@index')->name('threads');
 
-Route::get('/threads/create', 'App\Http\Controllers\ThreadController@create')->name('threads.create');
-Route::post('/threads/create', 'App\Http\Controllers\ThreadController@create');
+Route::get('/threads/create', [ThreadController::class, 'create'])->name('threads.create');
+Route::post('/threads/create', [ThreadController::class, 'create']);
+Route::post('/threads/create', [ThreadController::class, 'store']);
+
+Route::get('/threads/{thread}',  [ThreadController::class, 'show'])->name('threads.show');
 
 require __DIR__.'/auth.php';
