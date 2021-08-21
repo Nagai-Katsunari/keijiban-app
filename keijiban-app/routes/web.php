@@ -36,5 +36,14 @@ Route::post('/threads/{thread}/comments', [CommentController::class, 'store'])->
 
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
+Route::get('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+Route::post('/comments/{comment}/edit', [CommentController::class, 'edit']);
+
+Route::post('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
+Route::get('/comments/{comment}', [CommentController::class, 'show'])->name('comments.show');
+
+Route::get('/comments', [CommentController::class, 'index'])->name('threads');
+
+
 
 require __DIR__.'/auth.php';
