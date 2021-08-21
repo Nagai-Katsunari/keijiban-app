@@ -34,4 +34,7 @@ Route::get('/threads/{thread}',  [ThreadController::class, 'show'])->name('threa
 
 Route::post('/threads/{thread}/comments', [CommentController::class, 'store'])->name('comments.store');
 
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+
 require __DIR__.'/auth.php';
