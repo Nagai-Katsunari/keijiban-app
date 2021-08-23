@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\admin\AdminLoginController;
+use App\Http\Controllers\admin\AdminLogoutController;
+use App\Http\Controllers\admin\AdminTopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,10 +48,15 @@ Route::get('/comments/{comment}', [CommentController::class, 'show'])->name('com
 
 Route::get('/threads', [CommentController::class, 'index'])->name('threads');
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::group(['middleware' => ['auth.admin']], function () {
+    //admin管理画面用
+    Route::get('/admin', [AdminTopController::class, 'index']);
+    Route::post('/admin/logout', [AdminLogoutController::class, 'logout']);
+});
 
-
-
+//管理側ログイン
+Route::get('/admin/login', [AdminLoginController::class, 'showLoginform']);
+Route::post('/admin/login', [AdminLoginController::class, 'login']);
 
 
 
