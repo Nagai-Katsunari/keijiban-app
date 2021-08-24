@@ -65,3 +65,32 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
+## テーブル定義所
+
+## commentsテーブル
+名前       型                Null    キー   デフォルト  AI
+id          bigint unsigned  NO       PRI   NULL        auto_increment
+user_id     bigint unsigned  NO       MUL   NULL    
+thread_id   bigint unsigned  NO       MUL   NULL    
+body        text             NO             NULL    
+created_at  timestamp        YES            NULL    
+updated_at  timestamp        YES            NULL
+
+## threadsテーブル
+名前        型                Null    キー   デフォルト  AI
+id          bigint unsigned   NO      PRI   NULL         auto_increment
+user_id     bigint unsigned   NO      MUL   NULL    
+title       text              NO            NULL    
+created_at  timestamp         YES           NULL    
+updated_at  timestamp         YES           NULL    
+
+## usersテーブル
+名前                型                Null    キー   デフォルト    AI
+id                  bigint unsigned   NO      PRI     NULL         auto_increment
+name                varchar(255)      NO              NULL  
+email               varchar(255)      NO      UNI     NULL  
+email_verified_at   timestamp         YES             NULL  
+password            varchar(255)      NO              NULL  
+remember_token      varchar(100)      YES             NULL  
+created_at          timestamp         YES             NULL  
+updated_at          timestamp         YES             NULL  
